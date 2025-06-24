@@ -26,7 +26,17 @@ class AppLogger:
         pass
 
 
-class CollectionLogger(AppLogger):
+class CatalogLogger(AppLogger):
+    """
+    Creates a catalog log for STAC catalog created from subparts.
+    Includes local_catalog_path, catalog_id, remote_catalog_path, a success/completion boolean, and timestamp of the log.
+    """
+
+    def __init__(self):
+        pass
+
+
+class CollectionLogger(CatalogLogger):
     """
     Creates a collection log for collections already downloaded.
     Includes collection_id, collection_path, a success/completion boolean, and timestamp of log.
@@ -57,7 +67,7 @@ class CollectionLogger(AppLogger):
         pass
 
 
-class ResourceLogger(AppLogger):
+class ResourceLogger(CollectionLogger):
     """
     Creates a resource log for resource zips downloaded.
     Includes collection_id, resource_id, unzip_path, a success/completion boolean, and timestamp of log.
@@ -88,7 +98,7 @@ class ResourceLogger(AppLogger):
         pass
 
 
-class AssetLogger(AppLogger):
+class AssetLogger(ResourceLogger):
     """
     Creates an asset log for each asset created from unzipped resources.
     includes their local unzip path, local cng path, success/completion boolean, and timestamp of log.
@@ -100,10 +110,8 @@ class AssetLogger(AppLogger):
     def create_asset_log(self):
         pass
 
-    def log_asset_
 
-
-class UploadLogger(AppLogger):
+class UploadLogger(AssetLogger):
     """
     Creates an upload log for each asset uploaded to cloud storage.
     includes their local cng path, their upload url, success/completion bool, and timestamp of log.
@@ -123,27 +131,25 @@ class STACLogger(AppLogger):
 
 
 class Resource:
-    def __init__(self, logger: AppLogger):
-        pass
-
-    def check_rsc_unzipped(self):
-        pass
-
-    def check_rsc_translated(self):
-        pass
-
-    def log_rsc_unzipped(self):
-        pass
-
-    def log_rsc_translated(self):
+    def __init__(self, logger: ResourceLogger):
         pass
 
 
 class Collection:
-    def __init__(self, logger: AppLogger):
+    def __init__(self, logger: CollectionLogger):
         pass
 
     def get_resources(self):
+        pass
+
+
+class Asset:
+    def __init__(self, logger: AssetLogger):
+        pass
+
+
+class AssetUpload:
+    def __init__(self, logger: UploadLogger):
         pass
 
 
