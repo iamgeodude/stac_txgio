@@ -111,19 +111,10 @@ class AssetLogger(ResourceLogger):
         pass
 
 
-class UploadLogger(AssetLogger):
+class AssetUploadLogger(AssetLogger):
     """
     Creates an upload log for each asset uploaded to cloud storage.
     includes their local cng path, their upload url, success/completion bool, and timestamp of log.
-    """
-
-    def __init__(self):
-        pass
-
-
-class STACLogger(AppLogger):
-    """
-    Creates a log for each upload cataloged in the STAC catalog json file. 
     """
 
     def __init__(self):
@@ -149,7 +140,7 @@ class Asset:
 
 
 class AssetUpload:
-    def __init__(self, logger: UploadLogger):
+    def __init__(self, logger: AssetUploadLogger):
         pass
 
 
