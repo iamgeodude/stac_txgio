@@ -134,8 +134,8 @@ class Resource:
                 f"Downloaded {self.resource} to {self.filepath}")
         except requests.exceptions.RequestException as e:
             print(
-                f"Error downloading {self.resource} to path {filepath}")
-
+                f"Error downloading {self.resource} to path {filepath}"
+            )
         return
 
     def unzip(self):
